@@ -83,7 +83,7 @@ export function auth(req: GatsbyFunctionRequest, res: GatsbyFunctionResponse) {
   const authorizationCode = new AuthorizationCode(oauthConfig)
 
   const url = authorizationCode.authorizeURL({
-    redirect_uri: `https://${host}/api/callback`,
+    redirect_uri: `https://gatsbynetlifycmsmain50494.gatsbyjs.io/api/callback/api/callback`,
     scope: `repo,user`,
     state: randomState(),
   })
@@ -102,7 +102,7 @@ export default async function callback(req: GatsbyFunctionRequest, res: GatsbyFu
 
     const accessToken = await authorizationCode.getToken({
       code,
-      redirect_uri: `https://${host}/api/callback`,
+      redirect_uri: `hhttps://gatsbynetlifycmsmain50494.gatsbyjs.io/api/callback/api/callback`,
     })
 
     console.debug('callback host=%o', host)
