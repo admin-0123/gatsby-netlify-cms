@@ -6,8 +6,8 @@ import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
 
 const {
-  OAUTH_CLIENT_ID = '',
-  OAUTH_CLIENT_SECRET = '',
+  GATSBY_OAUTH_CLIENT_ID = '',
+  GATSBY_OAUTH_CLIENT_SECRET = '',
   OAUTH_HOST = 'https://github.com',
   OAUTH_TOKEN_PATH = '/login/oauth/access_token',
   OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize',
@@ -15,8 +15,8 @@ const {
 
 export const oauthConfig: ModuleOptions = Object.freeze({
   client: Object.freeze({
-    id: OAUTH_CLIENT_ID!,
-    secret: OAUTH_CLIENT_SECRET,
+    id: GATSBY_OAUTH_CLIENT_ID!,
+    secret: GATSBY_OAUTH_CLIENT_SECRET,
   }),
   auth: Object.freeze({
     tokenHost: OAUTH_HOST,
