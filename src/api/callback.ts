@@ -10,12 +10,13 @@ import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
 
 const {
-  GATSBY_OAUTH_CLIENT_ID = '',
-  GATSBY_OAUTH_CLIENT_SECRET = '',
   OAUTH_HOST = 'https://github.com',
   OAUTH_TOKEN_PATH = '/login/oauth/access_token',
   OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize',
 } = process.env
+
+const GATSBY_OAUTH_CLIENT_ID = process.env.GATSBY_OAUTH_CLIENT_ID;
+const GATSBY_OAUTH_CLIENT_SECRET = process.env.GATSBY_OAUTH_CLIENT_SECRET;
 
 export const oauthConfig: ModuleOptions = Object.freeze({
   client: Object.freeze({
