@@ -72,7 +72,7 @@ export function renderResponse(status: 'success' | 'error', content: any) {
 /** An endpoint to start an OAuth2 authentication */
 export default function auth(req: NowRequest, res: NowResponse) {
   const { host } = req.headers
-
+  console.log('host', host)
   console.debug('auth host=%o', host)
 
   const authorizationCode = new AuthorizationCode(oauthConfig)

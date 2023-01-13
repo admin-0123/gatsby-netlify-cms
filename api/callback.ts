@@ -96,7 +96,7 @@ export default async function callback(req: NowRequest, res: NowResponse) {
   try {
     const code = req.query.code as string
     const { host } = req.headers
-
+    console.log('callback host', host)
     const authorizationCode = new AuthorizationCode(oauthConfig)
 
     const accessToken = await authorizationCode.getToken({
