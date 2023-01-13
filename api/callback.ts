@@ -93,6 +93,7 @@ export function auth(req: any, res: any) {
 
 /** An endpoint to finish an OAuth2 authentication */
 export default async function callback(req: any, res: any) {
+  console.log("call back", req)
   try {
     const code = req.query.code as string
     const { host } = req.headers
