@@ -10,22 +10,22 @@ import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
 
 const {
-  OAUTH_CLIENT_ID = '6f211815206c4322e4fc',
-  OAUTH_CLIENT_SECRET = '782b611cbea429923a260bad5a590746b853cab7',
-  OAUTH_HOST = 'https://github.com',
-  OAUTH_TOKEN_PATH = '/login/oauth/access_token',
-  OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize',
+  GATSBY_OAUTH_CLIENT_ID = '',
+  GATSBY_OAUTH_CLIENT_SECRET = '',
+  GATSBY_OAUTH_HOST = 'https://github.com',
+  GATSBY_OAUTH_TOKEN_PATH = '/login/oauth/access_token',
+  GATSBY_OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize',
 } = process.env
 
 export const oauthConfig: ModuleOptions = Object.freeze({
   client: Object.freeze({
-    id: OAUTH_CLIENT_ID!,
-    secret: OAUTH_CLIENT_SECRET,
+    id: GATSBY_OAUTH_CLIENT_ID!,
+    secret: GATSBY_OAUTH_CLIENT_SECRET,
   }),
   auth: Object.freeze({
-    tokenHost: OAUTH_HOST,
-    tokenPath: OAUTH_TOKEN_PATH,
-    authorizePath: OAUTH_AUTHORIZE_PATH,
+    tokenHost: GATSBY_OAUTH_HOST,
+    tokenPath: GATSBY_OAUTH_TOKEN_PATH,
+    authorizePath: GATSBY_OAUTH_AUTHORIZE_PATH,
   }),
 })
 
