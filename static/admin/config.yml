@@ -1,7 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: admin-0123/gatsby-netlify-cms
   branch: main
-  base_url: https://gatsbystarternetlifycmsma78732.gatsbyjs.io/
+  base_url: https://gatsby-netlify-cms.vercel.app/
   auth_endpoint: api/auth
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
