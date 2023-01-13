@@ -6,8 +6,8 @@ import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
 
 const {
-  OAUTH_CLIENT_ID = '',
-  OAUTH_CLIENT_SECRET = '',
+  OAUTH_CLIENT_ID = '6f211815206c4322e4fc',
+  OAUTH_CLIENT_SECRET = '782b611cbea429923a260bad5a590746b853cab7',
   OAUTH_HOST = 'https://github.com',
   OAUTH_TOKEN_PATH = '/login/oauth/access_token',
   OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize',
