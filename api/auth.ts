@@ -88,32 +88,3 @@ export default function auth(req: NowRequest, res: NowResponse) {
   res.end()
 }
 
-/** An endpoint to finish an OAuth2 authentication */
-export async function callback(req: NowRequest, res: NowResponse) {
-  try {
-    const code = req.query.code as string
-    const { host } = req.headers
-
-    const authorizationCode = new AuthorizationCode(oauthConfig)
-
-    const accessToken = await authorizationCode.getToken({
-      code,
-      redirect_uri: `https://${host}/api/callback`,
-    })
-
-    console.debug('callback host=%o', host)
-
-    const { token } = authorizationCode.createToken(accessToken)
-    
-    res.setHeader('Content-Type', 'text/html');
-
-    res.status(200).send(
-      renderResponse('success', {
-        token: token.token.access_token,
-        provider: 'github',
-      })
-    )
-  } catch (e) {
-    res.status(200).send(renderResponse('error', e))
-  }
-}

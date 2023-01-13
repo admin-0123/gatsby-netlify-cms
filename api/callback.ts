@@ -72,25 +72,6 @@ export function renderResponse(status: 'success' | 'error', content: any) {
   </html>
   `
 }
-
-/** An endpoint to start an OAuth2 authentication */
-export function auth(req: NowRequest, res: NowResponse) {
-  const { host } = req.headers
-
-  console.debug('auth host=%o', host)
-
-  const authorizationCode = new AuthorizationCode(oauthConfig)
-
-  const url = authorizationCode.authorizeURL({
-    redirect_uri: `https://${host}/api/callback`,
-    scope: `repo,user`,
-    state: randomState(),
-  })
-
-  res.writeHead(301, { Location: url })
-  res.end()
-}
-
 /** An endpoint to finish an OAuth2 authentication */
 export default async function callback(req: NowRequest, res: NowResponse) {
   console.log("call back", req)
