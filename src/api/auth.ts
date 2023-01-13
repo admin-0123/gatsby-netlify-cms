@@ -70,7 +70,7 @@ export function renderResponse(status: 'success' | 'error', content: any) {
 }
 
 /** An endpoint to start an OAuth2 authentication */
-export default function auth(req: NowRequest, res: NowResponse) {
+export default function auth(req: any, res: any) {
   console.log("auth", req)
   const { host } = req.headers
   console.log('host', host)
