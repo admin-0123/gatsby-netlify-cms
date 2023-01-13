@@ -1,8 +1,7 @@
 // export { auth as default } from '@openlab/vercel-netlify-cms-github'
 
 import dedent = require('dedent')
-// import { NowRequest, NowResponse } from '@vercel/node'
-import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby"
+import { NowRequest, NowResponse } from '@vercel/node'
 import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
 
@@ -71,7 +70,7 @@ export function renderResponse(status: 'success' | 'error', content: any) {
 }
 
 /** An endpoint to start an OAuth2 authentication */
-export default function auth(req: GatsbyFunctionRequest, res: GatsbyFunctionResponse) {
+export default function auth(req: NowRequest, res: NowResponse) {
   const { host } = req.headers
   console.log('host', host)
   console.debug('auth host=%o', host)
@@ -79,7 +78,7 @@ export default function auth(req: GatsbyFunctionRequest, res: GatsbyFunctionResp
   const authorizationCode = new AuthorizationCode(oauthConfig)
 
   const url = authorizationCode.authorizeURL({
-    redirect_uri: `https://gatsbynetlifycmsmain50494.gatsbyjs.io/api/callback`,
+    redirect_uri: `https://${host}/api/callback`,
     scope: `repo,user`,
     state: randomState(),
   })
@@ -89,7 +88,7 @@ export default function auth(req: GatsbyFunctionRequest, res: GatsbyFunctionResp
 }
 
 /** An endpoint to finish an OAuth2 authentication */
-export async function callback(req: GatsbyFunctionRequest, res: GatsbyFunctionResponse) {
+export async function callback(req: NowRequest, res: NowResponse) {
   try {
     const code = req.query.code as string
     const { host } = req.headers
@@ -98,7 +97,7 @@ export async function callback(req: GatsbyFunctionRequest, res: GatsbyFunctionRe
 
     const accessToken = await authorizationCode.getToken({
       code,
-      redirect_uri: `https://gatsbynetlifycmsmain50494.gatsbyjs.io/api/callback`,
+      redirect_uri: `https://${host}/api/callback`,
     })
 
     console.debug('callback host=%o', host)
