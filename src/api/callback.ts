@@ -4,7 +4,7 @@
 // with the goal of moving to a reusable npm module
 //
 
-import dedent = require('dedent')
+import dedent from 'dedent'
 import { NowRequest, NowResponse } from '@vercel/node'
 import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'

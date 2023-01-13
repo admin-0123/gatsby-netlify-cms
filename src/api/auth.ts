@@ -1,6 +1,6 @@
 // export { auth as default } from '@openlab/vercel-netlify-cms-github'
 
-import dedent = require('dedent')
+import dedent from 'dedent'
 import { NowRequest, NowResponse } from '@vercel/node'
 import { randomBytes } from 'crypto'
 import { AuthorizationCode, ModuleOptions } from 'simple-oauth2'
