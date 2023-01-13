@@ -74,7 +74,7 @@ export function renderResponse(status: 'success' | 'error', content: any) {
 }
 
 /** An endpoint to start an OAuth2 authentication */
-export function auth(req: NowRequest, res: NowResponse) {
+export function auth(req: any, res: any) {
   const { host } = req.headers
 
   console.debug('auth host=%o', host)
@@ -92,7 +92,7 @@ export function auth(req: NowRequest, res: NowResponse) {
 }
 
 /** An endpoint to finish an OAuth2 authentication */
-export default async function callback(req: NowRequest, res: NowResponse) {
+export default async function callback(req: any, res: any) {
   try {
     const code = req.query.code as string
     const { host } = req.headers
